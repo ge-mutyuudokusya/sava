@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>リアルタイムじゃんけん</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    button {
+      margin: 10px;
+      padding: 15px 25px;
+      font-size: 1.2em;
+    }
+    img {
+      width: 80px;
+      height: 80px;
+    }
+    .character {
+      width: 100px;
+      height: 100px;
+      margin: 10px auto;
+      animation: bounce 1s infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+    .buttons { display: flex; justify-content: center; flex-wrap: wrap; }
+    .hand-container { display: flex; justify-content: space-around; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>リアルタイムじゃんけん</h1>
+  <div class="character">
+    <img src="images/character.png" alt="character">
+  </div>
+  <div id="status">接続中...</div>
+  <div class="buttons">
+    <button onclick="choose('rock')" disabled>✊</button>
+    <button onclick="choose('scissors')" disabled>✌</button>
+    <button onclick="choose('paper')" disabled>✋</button>
+  </div>
+  <div class="hand-container">
+    <div>
+      <h3>あなたの手</h3>
+      <img id="my-hand" />
+    </div>
+    <div>
+      <h3>相手の手</h3>
+      <img id="opponent-hand" />
+    </div>
+  </div>
+  <div>
+    <h2 id="result-text"></h2>
+    <img id="result-img" />
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
