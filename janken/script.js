@@ -137,7 +137,7 @@ function showResult(result) {
       break;
     case "lose":
       resultText.innerText = "あなたの負け...";
-      resultImg.src = "images/1.jpeg";
+      resultImg.src = "images/1.jpg";
       break;
     case "draw":
       resultText.innerText = "引き分け！";
@@ -157,3 +157,4 @@ function resetView() {
   document.getElementById("status").innerText = "手を選んでください";
   enableButtons(true);
 }
+
