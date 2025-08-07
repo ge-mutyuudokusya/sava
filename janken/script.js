@@ -137,7 +137,7 @@ function showResult(result) {
       break;
     case "lose":
       resultText.innerText = "あなたの負け...";
-      resultImg.src = "images/lose.gif";
+      resultImg.src = "images/1.jpeg";
       break;
     case "draw":
       resultText.innerText = "引き分け！";
