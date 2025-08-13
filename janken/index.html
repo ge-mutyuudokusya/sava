@@ -35,11 +35,41 @@
   </style>
 </head>
 <body>
+
+  <div style="max-width:900px;margin:0 auto">
+    <h1>リアルタイムじゃんけん+</h1>
+    <div id="lobby" style="margin:16px 0;padding:12px;background:#fff;border-radius:12px">
+      <h2>マッチング</h2>
+      <div style="margin:8px 0">
+        <button id="btn-random">ランダムマッチ</button>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
+        <input id="private-code" placeholder="合言葉" style="padding:10px;border-radius:8px;border:1px solid #ccc;min-width:160px">
+        <button id="btn-private">プライベートマッチ（部屋作成/参加）</button>
+      </div>
+    </div>
+
+    <div id="char-select" style="margin:16px 0;padding:12px;background:#fff;border-radius:12px">
+      <h2>キャラクター選択</h2>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <label style="cursor:pointer">
+          <input type="radio" name="ch" value="warrior" checked> 戦士
+          <img src="images/1.jpg" style="width:80px;height:80px;object-fit:cover;border-radius:8px;display:block;margin:4px auto">
+        </label>
+        <label style="cursor:pointer">
+          <input type="radio" name="ch" value="mage"> 魔法使い
+          <img src="images/character.png" style="width:80px;height:80px;object-fit:cover;border-radius:8px;display:block;margin:4px auto">
+        </label>
+      </div>
+      <small>※ キャラによって初期ステータスが異なります</small>
+    </div>
+  </div>
+
   <h1>リアルタイムじゃんけん</h1>
   <div class="character">
     <img src="images/character.png" alt="character">
   </div>
-  <div id="status">接続中...</div>
+  <div id="status-old">接続中...</div>
   <div class="buttons">
     <button onclick="choose('rock')" disabled>✊</button>
     <button onclick="choose('scissors')" disabled>✌</button>
@@ -63,5 +93,14 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script src="script.js"></script>
+
+  <script>
+    document.getElementById('btn-random').addEventListener('click', () => startMatch('random'));
+    document.getElementById('btn-private').addEventListener('click', () => {
+      const code = document.getElementById('private-code').value.trim();
+      startMatch('private', code);
+    });
+  </script>
+
 </body>
 </html>
